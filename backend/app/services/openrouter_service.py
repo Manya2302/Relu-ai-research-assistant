@@ -201,6 +201,10 @@ class GroqService:
             raise
 
     def _to_result(self, payload: dict[str, Any], context: CompanyResearchContext) -> CompanyResearchResult:
+        if not isinstance(payload, dict):
+            logger.warning(f"LLM returned non-dict payload: {type(payload)}")
+            payload = {}
+            
         competitors = [
             Competitor(
                 name=normalize_whitespace(str(item.get('name', '')).strip()),
@@ -208,11 +212,14 @@ class GroqService:
                 reason=normalize_whitespace(str(item.get('reason', '')).strip()),
             )
             for item in payload.get('competitors', []) or []
-            if str(item.get('name', '')).strip()
+            if isinstance(item, dict) and str(item.get('name', '')).strip()
         ]
         competitors = self._dedupe_competitors(competitors)
         
         raw_leadership = payload.get('leadership_info') or {}
+        if not isinstance(raw_leadership, dict):
+            raw_leadership = {}
+            
         leadership_info = LeadershipInfo(
             ceo=normalize_whitespace(str(raw_leadership.get('ceo', '')).strip()),
             cfo=normalize_whitespace(str(raw_leadership.get('cfo', '')).strip()),
