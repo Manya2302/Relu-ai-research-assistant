@@ -27,7 +27,7 @@ export function DiscordPanel({ value, onChange }: DiscordPanelProps) {
     }
 
     try {
-      const res = await fetch('http://localhost:8000/api/discord/verify', {
+      const res = await fetch('/api/discord/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),

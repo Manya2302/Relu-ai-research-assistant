@@ -18,7 +18,7 @@ app = FastAPI(title=settings.app_name, version=settings.app_version)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins or ['*'],
+    allow_origins=['*'],
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
@@ -42,6 +42,7 @@ if os.path.isdir(frontend_dist):
     
     @app.get("/{full_path:path}")
     async def serve_frontend(request: Request, full_path: str):
+        print(f"CATCH-ALL HIT: {request.method} {full_path}")
         # Allow API routes to pass through (though they shouldn't hit this due to routing order usually, but just in case)
         if full_path.startswith("api/"):
             return JSONResponse(status_code=404, content={"detail": "Not Found"})

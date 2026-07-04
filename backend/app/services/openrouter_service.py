@@ -74,11 +74,23 @@ class GroqService:
                     headers=headers,
                     json=self._build_payload(model or self.default_model, context, mode=mode),
                 )
-                if response.status_code != 413:
+                
+                if response.status_code == 200:
                     break
-                logger.warning('Groq payload was too large for mode=%s, retrying with smaller context.', mode)
+                    
+                error_text = response.text.lower()
+                logger.warning(f"Groq API returned {response.status_code}: {response.text}")
+                
+                if response.status_code in (413, 400) and ("too large" in error_text or "token" in error_text or "context length" in error_text or "exceeds" in error_text):
+                    logger.warning(f'Groq payload was too large for mode={mode}, retrying with smaller context.')
+                    continue
+                else:
+                    break
+                    
             assert response is not None
-            response.raise_for_status()
+            if response.status_code != 200:
+                raise Exception(f"Groq API Error: {response.text}")
+            
             raw_content = response.json()['choices'][0]['message']['content']
 
         data = self._parse_json_payload(raw_content)

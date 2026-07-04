@@ -1,4 +1,4 @@
-import { BrainCircuit, Building2, ShieldCheck } from 'lucide-react'
+import { BrainCircuit, Building2, ShieldCheck, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -9,11 +9,25 @@ import type { StoredConfig } from '@/types/research'
 interface SidebarProps {
   config: StoredConfig
   onSaveConfig: (value: StoredConfig) => void
+  isMobileOpen?: boolean
+  onCloseMobile?: () => void
 }
 
-export function Sidebar({ config, onSaveConfig }: SidebarProps) {
+export function Sidebar({ config, onSaveConfig, isMobileOpen, onCloseMobile }: SidebarProps) {
   return (
-    <aside className="flex h-full flex-col gap-4 border-r border-slate-800 bg-slate-950/95 p-4 backdrop-blur-xl md:w-[360px] md:min-w-[360px]">
+    <>
+      {/* Mobile Backdrop */}
+      {isMobileOpen && (
+        <div className="fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm md:hidden" onClick={onCloseMobile} />
+      )}
+      
+      <aside className={`fixed inset-y-0 left-0 z-50 flex h-full w-[85vw] max-w-[360px] flex-col gap-4 overflow-y-auto border-r border-slate-800 bg-slate-950/95 p-4 backdrop-blur-xl transition-transform duration-300 ease-in-out md:static md:w-[360px] md:min-w-[360px] md:translate-x-0 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="flex items-center justify-between md:hidden mb-2">
+          <h2 className="text-sm font-semibold text-slate-100 uppercase tracking-widest">Settings</h2>
+          <Button variant="ghost" size="icon" onClick={onCloseMobile}>
+            <X className="h-5 w-5" />
+          </Button>
+        </div>
       <div className="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 p-4 shadow-glow">
         <div className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-slate-950 shadow-md">
@@ -35,8 +49,8 @@ export function Sidebar({ config, onSaveConfig }: SidebarProps) {
 
 
       <div className="mt-auto hidden md:block">
-
       </div>
     </aside>
+    </>
   )
 }

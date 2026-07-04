@@ -1,9 +1,11 @@
 import type { ModelInfo, ProgressEvent, ResearchRequest } from '@/types/research'
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
 
-function toWsUrl(url: string): string {
-  return url.replace(/^http/, 'ws').replace(/\/$/, '')
+function getWsUrl(): string {
+  if (API_BASE_URL) return API_BASE_URL.replace(/^http/, 'ws').replace(/\/$/, '') + '/api/ws/research'
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
+  return `${protocol}//${window.location.host}/api/ws/research`
 }
 
 export async function listGroqModels(groqApiKey: string): Promise<ModelInfo[]> {
@@ -29,7 +31,7 @@ export async function runResearchStream(
   onProgress: (event: ProgressEvent) => void,
 ): Promise<ProgressEvent> {
   return new Promise((resolve, reject) => {
-    const socket = new WebSocket(`${toWsUrl(API_BASE_URL)}/api/ws/research`)
+    const socket = new WebSocket(getWsUrl())
 
     socket.onopen = () => {
       socket.send(JSON.stringify(request))
