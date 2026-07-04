@@ -76,7 +76,7 @@ export function Home() {
           </div>
         </header>
 
-        <section className="mx-auto flex w-full max-w-5xl flex-1 flex-col overflow-y-auto overflow-x-hidden px-4 py-6 md:px-6">
+        <section className="mx-auto flex w-full max-w-5xl flex-1 flex-col overflow-y-auto overflow-x-hidden px-4 py-6 pb-32 md:px-6 min-h-0">
           {!result && events.length === 0 ? (
             <div className="flex flex-1 flex-col items-center justify-center text-center mt-10 md:mt-20">
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
