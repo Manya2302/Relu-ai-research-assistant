@@ -48,9 +48,9 @@ export function Home() {
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-amber-500/30">
-      <Sidebar 
-        config={config} 
-        onSaveConfig={handleSave} 
+      <Sidebar
+        config={config}
+        onSaveConfig={handleSave}
         isMobileOpen={isMobileSidebarOpen}
         onCloseMobile={() => setIsMobileSidebarOpen(false)}
       />
@@ -84,15 +84,15 @@ export function Home() {
                   AI-Powered Intelligence
                 </span>
                 <h2 className="text-[2.75rem] md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.05] max-w-2xl mx-auto">
-                  Know any<br/>company<br/>in minutes.
+                  Know any<br />company<br />in minutes.
                 </h2>
                 <p className="text-slate-400 max-w-lg mx-auto mb-10 text-base md:text-lg leading-relaxed">
                   Enter a company name or website URL to get AI-powered insights, competitor analysis, pain points, and a professional PDF report.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
                   {['notion.so', 'Figma', 'Linear', 'Vercel'].map((term) => (
-                    <button 
-                      key={term} 
+                    <button
+                      key={term}
                       onClick={() => handleResearch(term)}
                       className="px-5 py-2 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-slate-300 text-sm hover:bg-[#222] hover:text-white transition-colors font-medium"
                     >
@@ -100,7 +100,7 @@ export function Home() {
                     </button>
                   ))}
                 </div>
-                
+
                 <div className="flex items-center gap-4 text-[11px] text-slate-500 w-full max-w-xs mx-auto">
                   <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-slate-800"></div>
                   <span className="tracking-wide">Configure API keys in the sidebar to get started</span>
