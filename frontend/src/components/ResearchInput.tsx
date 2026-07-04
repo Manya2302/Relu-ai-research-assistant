@@ -17,9 +17,7 @@ interface FormValues {
 export function ResearchInput({ isRunning, onSubmit }: ResearchInputProps) {
   const { register, handleSubmit, reset, setFocus } = useForm<FormValues>({ defaultValues: { query: '' } })
 
-  useEffect(() => {
-    setFocus('query')
-  }, [setFocus])
+  // Removed auto-focus to prevent page scrolling to bottom on load
 
   const submit = handleSubmit(async (values) => {
     await onSubmit(values.query)

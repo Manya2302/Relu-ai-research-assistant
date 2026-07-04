@@ -47,7 +47,7 @@ export function Home() {
   }
 
   return (
-    <div className="flex min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-amber-500/30">
+    <div className="flex h-[100dvh] w-full overflow-hidden bg-[#050505] text-slate-100 font-sans selection:bg-amber-500/30">
       <Sidebar
         config={config}
         onSaveConfig={handleSave}
@@ -55,7 +55,7 @@ export function Home() {
         onCloseMobile={() => setIsMobileSidebarOpen(false)}
       />
 
-      <main className="flex min-h-screen flex-1 flex-col overflow-hidden">
+      <main className="flex h-full flex-1 flex-col overflow-hidden relative">
         <header className="sticky top-0 z-20 border-b border-white/5 bg-[#050505]/80 px-4 py-4 backdrop-blur-xl md:px-6">
           <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4">
             <div className="flex items-center gap-4">
@@ -76,7 +76,7 @@ export function Home() {
           </div>
         </header>
 
-        <section className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-4 py-6 md:px-6">
+        <section className="mx-auto flex w-full max-w-5xl flex-1 flex-col overflow-y-auto overflow-x-hidden px-4 py-6 md:px-6">
           {!result && events.length === 0 ? (
             <div className="flex flex-1 flex-col items-center justify-center text-center mt-10 md:mt-20">
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
