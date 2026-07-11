@@ -1,6 +1,5 @@
 #  Company Research AI
 
-![Project Banner](https://via.placeholder.com/1000x200.png?text=Company+Research+AI)
 
 An enterprise-grade, autonomous business intelligence tool that uses Large Language Models, web crawlers, and search APIs to gather, extract, and format actionable intelligence about any company into a professional PDF report. 
 
