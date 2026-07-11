@@ -1,4 +1,4 @@
-# 📊 Company Research AI
+#  Company Research AI
 
 ![Project Banner](https://via.placeholder.com/1000x200.png?text=Company+Research+AI)
 
@@ -8,19 +8,12 @@ This project was built as a capstone/submission to demonstrate advanced API inte
 
 ---
 
-## 🎓 Student Details
-- **Name:** [Your Name Here]
-- **Email:** [Your Email Here]
-- **Course / Batch:** [Your Course/Batch Info Here]
+
 - **Project Name:** Company Research AI
 
 ---
 
-## 🚀 Deployment URL
-*(Insert your live deployment URL below)*
-👉 **[Live Demo](https://your-deployment-url.com)**
 
----
 
 ## ⚙️ How It Works (Architecture Diagram)
 
@@ -50,7 +43,7 @@ sequenceDiagram
 
 ---
 
-## ✨ Core Features
+##  Core Features
 1. **Intelligent Website Crawling**: Automatically discovers and parses critical company pages (About, Products, Pricing).
 2. **Competitor Analysis**: Identifies niche market peers rather than generic industry giants using targeted Serper queries.
 3. **AI-Powered Insights**: Uses OpenRouter to extract factual metrics (revenue, funding, leadership) and generate actionable recommendations.
@@ -59,7 +52,7 @@ sequenceDiagram
 
 ---
 
-## 💻 Setup Instructions
+##  Setup Instructions
 
 This project is built using a **React (Vite)** frontend and a **Python (FastAPI)** backend. Follow these instructions to run the project locally.
 
@@ -105,7 +98,7 @@ This project is built using a **React (Vite)** frontend and a **Python (FastAPI)
 
 ---
 
-## 🔐 Environment Variable Documentation
+##  Environment Variable Documentation
 
 The application relies entirely on client-side API keys that the user inputs directly into the browser UI ("Bring Your Own Key"). Therefore, **no `.env` files are strictly required to run the application!** 
 
@@ -124,7 +117,7 @@ REQUEST_TIMEOUT_SECONDS=30
 
 ---
 
-## 📚 Technical Documentation
+##  Technical Documentation
 
 Detailed architectural documentation for the core systems can be found in the `docs/` folder:
 - [Website Crawling Implementation](docs/website_crawling.md)
